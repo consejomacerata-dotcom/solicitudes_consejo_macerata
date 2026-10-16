@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Panel Interno · Macerata 139</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --brand-900: #0f1f3d;
+            --brand-800: #173a63;
+            --brand-700: #1f4d80;
+            --brand-600: #2b6ca3;
+            --accent: #0f9b8e;
+            --ok: #1d9e64;
+            --warn: #e0a106;
+            --danger: #d93b3b;
+        }
+
+        * {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(1200px 600px at 8% -10%, #e8effa 0%, transparent 60%),
+                radial-gradient(900px 500px at 100% 0%, #e4f7f4 0%, transparent 55%),
+                #eef2f8;
+            min-height: 100vh;
+        }
+
+        #login-screen {
+            background:
+                radial-gradient(800px 500px at 20% 20%, rgba(43, 108, 163, .4) 0%, transparent 60%),
+                radial-gradient(700px 400px at 80% 80%, rgba(15, 155, 142, .35) 0%, transparent 60%),
+                linear-gradient(135deg, #0f1f3d 0%, #173a63 60%, #0f9b8e 140%);
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, .98);
+            backdrop-filter: blur(20px);
+            animation: cardIn .6s cubic-bezier(.3, 1.3, .5, 1);
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .login-logo {
+            background: linear-gradient(135deg, #173a63, #0f9b8e);
+            box-shadow: 0 12px 30px rgba(23, 58, 99, .3);
+        }
+
+        #dashboard-content {
+            opacity: 0;
+            transition: opacity .5s ease;
+        }
+
+        #dashboard-content.visible {
+            opacity: 1;
+        }
+
+        .topbar {
+            background: linear-gradient(135deg, #173a63 0%, #2b6ca3 60%, #0f9b8e 140%);
+            color: #fff;
+            box-shadow: 0 12px 32px rgba(23, 58, 99, .25);
+        }
+
+        .kpi-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform .25s cubic-bezier(.3, 1.2, .5, 1), box-shadow .25s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 42px rgba(23, 58, 99, .15);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+        }
+
+        .kpi-abiertos::before {
+            background: linear-gradient(180deg, #2b6ca3, #1f4d80);
+        }
+
+        .kpi-proceso::before {
+            background: linear-gradient(180deg, #e0a106, #b8820a);
+        }
+
+        .kpi-vencidos::before {
+            background: linear-gradient(180deg, #d93b3b, #a52222);
+        }
+
+        .kpi-resueltos::before {
+            background: linear-gradient(180deg, #1d9e64, #137a4b);
+        }
+
+        .kpi-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            transition: transform .3s;
+        }
+
+        .kpi-card:hover .kpi-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .kpi-abiertos .kpi-icon {
+            background: #eaf3ff;
+            color: #1f4d80;
+        }
+
+        .kpi-proceso .kpi-icon {
+            background: #fff7e6;
+            color: #8a5a06;
+        }
+
+        .kpi-vencidos .kpi-icon {
+            background: #fff0f0;
+            color: #a52222;
+        }
+
+        .kpi-resueltos .kpi-icon {
+            background: #e9f9f0;
+            color: #137a4b;
+        }
+
+        .kpi-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0f1f3d;
+            letter-spacing: -.02em;
+            line-height: 1;
+            transition: transform .3s;
+        }
+
+        .kpi-card:hover .kpi-value {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .badge-urgente {
+            background: #fdeaea;
+            color: #a52222;
+            border: 1.5px solid #f5c2c2;
+        }
+
+        .badge-alta {
+            background: #fff0e6;
+            color: #a34a06;
+            border: 1.5px solid #f0c896;
+        }
+
+        .badge-media {
+            background: #fff7e6;
+            color: #8a5a06;
+            border: 1.5px solid #f2d9a8;
+        }
+
+        .badge-baja {
+            background: #e9f9f0;
+            color: #137a4b;
+            border: 1.5px solid #b8e6cd;
+        }
+
+        .badge-abierto {
+            background: #eaf3ff;
+            color: #1f4d80;
+            border: 1.5px solid #cfe0f5;
+        }
+
+        .badge-proceso {
+            background: #fff7e6;
+            color: #8a5a06;
+            border: 1.5px solid #f2d9a8;
+        }
+
+        .badge-cerrado {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1.5px solid #cbd5e1;
+        }
+
+        .badge-sla-ok {
+            background: #e9f9f0;
+            color: #137a4b;
+        }
+
+        .badge-sla-por-vencer {
+            background: #fff7e6;
+            color: #8a5a06;
+            animation: pulseWarn 2s ease-in-out infinite;
+        }
+
+        .badge-sla-vencido {
+            background: #d93b3b;
+            color: #fff;
+            animation: pulseDanger 1.5s ease-in-out infinite;
+        }
+
+        .badge-sla-cerrado {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .badge-sla-sin-fecha {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        @keyframes pulseWarn {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(224, 161, 6, .4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(224, 161, 6, 0);
+            }
+        }
+
+        @keyframes pulseDanger {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(217, 59, 59, .5);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(217, 59, 59, 0);
+            }
+        }
+
+        .caso-row {
+            transition: background .18s, transform .18s;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .caso-row:hover {
+            background: #f8fafd;
+            border-left-color: #2b6ca3;
+            transform: translateX(2px);
+        }
+
+        .caso-row.urgente {
+            border-left-color: #d93b3b;
+        }
+
+        .caso-row.alta {
+            border-left-color: #ea7317;
+        }
+
+        .caso-row.media {
+            border-left-color: #e0a106;
+        }
+
+        .caso-row.baja {
+            border-left-color: #1d9e64;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #2b6ca3;
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translate(-50%, 200%);
+            background: #0f1f3d;
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, .3);
+            transition: transform .4s cubic-bezier(.2, .9, .3, 1.3);
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        #toast.show {
+            transform: translate(-50%, 0);
+        }
+
+        #detail-overlay {
+            backdrop-filter: blur(6px);
+            transition: opacity .25s;
+        }
+
+        #detail-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .detail-card {
+            animation: cardIn .4s cubic-bezier(.3, 1.3, .5, 1);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+            border-radius: 10px;
+            border: 2px solid #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            margin-right: 8px;
+        }
+
+        .live-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: #22c55e;
+            opacity: .4;
+            animation: livePulse 1.8s ease-out infinite;
+        }
+
+        @keyframes livePulse {
+            0% {
+                transform: scale(.8);
+                opacity: .6;
+            }
+
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .detail-field {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .detail-field:last-child {
+            border-bottom: 0;
+        }
+
+        .detail-field .lbl {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            min-width: 130px;
+            padding-top: 2px;
+        }
+
+        .detail-field .val {
+            flex: 1;
+            font-size: 14px;
+            color: #1e293b;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        @media (max-width: 640px) {
+            .kpi-value {
+                font-size: 1.8rem;
+            }
+
+            .kpi-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .detail-field {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .detail-field .lbl {
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans min-h-screen">
+
+    <!-- ============ PANTALLA DE LOGIN ============ -->
+    <div id="login-screen" class="fixed inset-0 flex items-center justify-center z-50">
+        <div class="login-card p-8 sm:p-10 rounded-3xl shadow-2xl max-w-md w-full mx-4">
+            <div class="text-center mb-8">
+                <div
+                    class="login-logo w-20 h-20 mx-auto rounded-2xl flex items-center justify-center text-white font-black text-2xl mb-4">
+                    M139
+                </div>
+                <h2 class="text-2xl font-extrabold text-slate-800 tracking-tight">Panel Interno</h2>
+                <p class="text-sm text-slate-500 mt-2">Acceso exclusivo del Consejo de Administración</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Contraseña de acceso</label>
+                    <input type="password" id="admin-password"
+                        class="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 focus:outline-none transition-all text-lg"
+                        placeholder="••••••••" onkeypress="if(event.key==='Enter') verificarAcceso()">
+                </div>
+                <button onclick="verificarAcceso()"
+                    class="w-full bg-gradient-to-r from-[#173a63] to-[#2b6ca3] hover:from-[#1f4d80] hover:to-[#3b82c4] text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-xl cursor-pointer text-lg">
+                    Ingresar
+                </button>
+                <p id="login-error"
+                    class="text-red-500 text-sm text-center hidden font-semibold bg-red-50 py-2 rounded-lg">
+                    Contraseña incorrecta
+                </p>
+                <p class="text-[11px] text-slate-400 text-center pt-2 leading-relaxed">
+                    🔒 Uso interno. Acceso registrado.<br>
+                    Prohibida su reproducción o difusión.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ DASHBOARD ============ -->
+    <div id="dashboard-content" class="max-w-7xl mx-auto px-3 sm:px-6 py-6">
+
+        <!-- ENCABEZADO -->
+        <header
+            class="topbar rounded-2xl p-5 sm:p-6 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-14 h-14 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-white font-black text-lg flex-none">
+                    M139
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">Control de Solicitudes</h1>
+                    <p class="text-sm text-white/80 flex items-center mt-1">
+                        <span class="live-dot"></span>
+                        Trazabilidad en tiempo real y cumplimiento de SLA
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button onclick="cargarDatosDesdeSheets()" id="btn-refresh"
+                    class="flex-1 sm:flex-none bg-white/15 hover:bg-white/25 text-white px-4 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer border border-white/20 flex items-center justify-center gap-2">
+                    <span id="refresh-icon">↻</span> Actualizar
+                </button>
+                <button onclick="cerrarSesion()"
+                    class="flex-1 sm:flex-none bg-white/15 hover:bg-white/25 text-white px-4 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer border border-white/20">
+                    Salir
+                </button>
+            </div>
+        </header>
+
+        <!-- KPIs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="kpi-card kpi-abiertos bg-white rounded-2xl p-5 shadow-sm">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Casos
+                            Abiertos</span>
+                        <div id="kpi-abiertos" class="kpi-value mt-2">0</div>
+                        <p class="text-xs text-slate-500 mt-1">Pendientes de gestión</p>
+                    </div>
+                    <div class="kpi-icon">📋</div>
+                </div>
+            </div>
+            <div class="kpi-card kpi-proceso bg-white rounded-2xl p-5 shadow-sm">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">En Proceso</span>
+                        <div id="kpi-proceso" class="kpi-value mt-2">0</div>
+                        <p class="text-xs text-slate-500 mt-1">Siendo atendidos</p>
+                    </div>
+                    <div class="kpi-icon">⏳</div>
+                </div>
+            </div>
+            <div class="kpi-card kpi-vencidos bg-white rounded-2xl p-5 shadow-sm">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">SLA Vencidos</span>
+                        <div id="kpi-vencidos" class="kpi-value mt-2">0</div>
+                        <p class="text-xs text-slate-500 mt-1">Requieren atención urgente</p>
+                    </div>
+                    <div class="kpi-icon">🚨</div>
+                </div>
+            </div>
+            <div class="kpi-card kpi-resueltos bg-white rounded-2xl p-5 shadow-sm">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Resueltos</span>
+                        <div id="kpi-resueltos" class="kpi-value mt-2">0</div>
+                        <p class="text-xs text-slate-500 mt-1">Cerrados con éxito</p>
+                    </div>
+                    <div class="kpi-icon">✅</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTROS -->
+        <div
+            class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm mb-6 flex flex-col lg:flex-row gap-3 items-stretch lg:items-center">
+            <div class="flex-1 relative">
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="search-box" oninput="filtrarCasos()"
+                    class="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 transition-all"
+                    placeholder="Buscar por nombre, torre, apartamento o asunto...">
+            </div>
+            <select id="filter-prioridad" onchange="filtrarCasos()"
+                class="px-4 py-3 border-2 border-slate-200 rounded-xl text-sm bg-white focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 cursor-pointer font-semibold text-slate-700">
+                <option value="">Todas las prioridades</option>
+                <option value="Urgente">🔴 Urgente</option>
+                <option value="Alta">🟠 Alta</option>
+                <option value="Media">🟡 Media</option>
+                <option value="Baja">🟢 Baja</option>
+            </select>
+            <select id="filter-estado" onchange="filtrarCasos()"
+                class="px-4 py-3 border-2 border-slate-200 rounded-xl text-sm bg-white focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15 cursor-pointer font-semibold text-slate-700">
+                <option value="">Todos los estados</option>
+                <option value="Abierto">📋 Abierto</option>
+                <option value="En Proceso">⏳ En Proceso</option>
+                <option value="Cerrado">✅ Cerrado</option>
+            </select>
+        </div>
+
+        <!-- TABLA -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-slate-100">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[900px]">
+                    <thead>
+                        <tr
+                            class="bg-slate-50 border-b-2 border-slate-100 text-[11px] font-bold text-slate-500 uppercase tracking-widest">
+                            <th class="p-4">Fecha</th>
+                            <th class="p-4">Solicitante / Unidad</th>
+                            <th class="p-4">Asunto / Categoría</th>
+                            <th class="p-4 text-center">Prioridad</th>
+                            <th class="p-4 text-center">Estado</th>
+                            <th class="p-4 text-center">SLA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-casos-body" class="text-sm text-slate-600 divide-y divide-slate-100">
+                        <tr>
+                            <td colspan="6" class="p-12 text-center">
+                                <div class="loading-spinner"></div>
+                                <p class="text-slate-400 font-medium mt-4">Cargando solicitudes...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="tabla-footer"
+                class="hidden px-5 py-3 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 font-medium flex justify-between items-center">
+                <span id="contador-resultados"></span>
+                <span>Última actualización: <span id="ultima-actualizacion">—</span></span>
+            </div>
+        </div>
+
+        <footer class="text-center text-xs text-slate-400 mt-8 py-4">
+            Consejo de Administración · Propiedad Macerata 139 · Panel Interno v2.0
+        </footer>
+    </div>
+
+    <!-- ============ MODAL DE DETALLE ============ -->
+    <div id="detail-overlay" class="hidden fixed inset-0 bg-slate-900/80 flex items-center justify-center z-40 p-4">
+        <div
+            class="detail-card bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div class="bg-gradient-to-r from-[#173a63] to-[#2b6ca3] p-5 flex justify-between items-center text-white">
+                <div class="min-w-0 flex-1">
+                    <h3 class="font-extrabold text-lg truncate" id="detail-asunto">—</h3>
+                    <p class="text-xs text-white/80 mt-1" id="detail-meta">—</p>
+                </div>
+                <button onclick="cerrarDetalle()"
+                    class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 transition-colors flex items-center justify-center text-xl font-bold cursor-pointer flex-none ml-4">
+                    ×
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto" id="detail-body"></div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        /* ============================================================
+           CONFIGURACIÓN
+           ============================================================ */
+        const API_URL = "https://script.google.com/macros/s/AKfycbz_iCSvXkqbupXLCJNhbwhxcVJyHM1fYkRU4YwQbcvqWHL1us590721o_PKjfgk6BoIZw/exec";
+        const API_TOKEN = "MacerataToken-2026-A7K9Q2";    // ← debe coincidir con el de Apps Script
+        const PASSWORD_CORRECTA = "Macerata2026*";         // ← CAMBIA ESTA CONTRASEÑA
+
+        let todosLosCasos = [];
+        let casosFiltrados = [];
+        let timeoutToast = null;
+
+        /* ---------------- SESIÓN ---------------- */
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem("macerata_autenticado") === "true") {
+                mostrarDashboard();
+            } else {
+                document.getElementById('admin-password').focus();
+            }
+        });
+
+        function verificarAcceso() {
+            const pass = document.getElementById('admin-password').value;
+            const errorBox = document.getElementById('login-error');
+
+            if (pass === PASSWORD_CORRECTA) {
+                sessionStorage.setItem("macerata_autenticado", "true");
+                sessionStorage.setItem("macerata_hora_login", new Date().toISOString());
+                mostrarDashboard();
+            } else {
+                errorBox.classList.remove('hidden');
+                document.getElementById('admin-password').value = '';
+                document.getElementById('admin-password').focus();
+                setTimeout(() => errorBox.classList.add('hidden'), 3000);
+            }
+        }
+
+        function mostrarDashboard() {
+            document.getElementById('login-screen').classList.add('hidden');
+            const content = document.getElementById('dashboard-content');
+            content.classList.remove('hidden');
+            requestAnimationFrame(() => content.classList.add('visible'));
+            cargarDatosDesdeSheets();
+        }
+
+        function cerrarSesion() {
+            sessionStorage.clear();
+            window.location.reload();
+        }
+
+        /* ---------------- TOAST ---------------- */
+        function mostrarToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(timeoutToast);
+            timeoutToast = setTimeout(() => t.classList.remove('show'), 2600);
+        }
+
+        /* ---------------- CARGA DE DATOS ---------------- */
+        async function cargarDatosDesdeSheets() {
+            const tbody = document.getElementById('tabla-casos-body');
+            const btnRefresh = document.getElementById('btn-refresh');
+            const iconRefresh = document.getElementById('refresh-icon');
+
+            tbody.innerHTML = `
+    <tr><td colspan="6" class="p-12 text-center">
+      <div class="loading-spinner"></div>
+      <p class="text-slate-400 font-medium mt-4">Actualizando información...</p>
+    </td></tr>`;
+
+            if (btnRefresh) btnRefresh.disabled = true;
+            if (iconRefresh) iconRefresh.style.animation = 'spin .8s linear infinite';
+
+            try {
+                const url = `${API_URL}?token=${encodeURIComponent(API_TOKEN)}&t=${Date.now()}`;
+                const respuesta = await fetch(url, { method: 'GET', redirect: 'follow' });
+
+                if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
+
+                const data = await respuesta.json();
+
+                if (data && data.error) throw new Error(data.message || data.error);
+
+                todosLosCasos = Array.isArray(data) ? data : (data.casos || []);
+                casosFiltrados = [...todosLosCasos];
+
+                actualizarKpis(todosLosCasos);
+                renderizarTabla(casosFiltrados);
+
+                const ahora = new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('ultima-actualizacion').textContent = ahora;
+                document.getElementById('tabla-footer').classList.remove('hidden');
+
+                mostrarToast(`✅ ${todosLosCasos.length} solicitudes cargadas`);
+            } catch (error) {
+                console.error("Error API:", error);
+                tbody.innerHTML = `
+      <tr><td colspan="6" class="p-12 text-center">
+        <div class="text-5xl mb-3">⚠️</div>
+        <p class="text-red-600 font-bold text-base">No se pudo conectar con la base de datos</p>
+        <p class="text-slate-500 text-sm mt-2">${error.message || 'Error de red'}</p>
+        <button onclick="cargarDatosDesdeSheets()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl text-sm font-bold transition-colors cursor-pointer">
+          Reintentar
+        </button>
+      </td></tr>`;
+                mostrarToast("❌ Error de conexión");
+            } finally {
+                if (btnRefresh) btnRefresh.disabled = false;
+                if (iconRefresh) iconRefresh.style.animation = '';
+            }
+        }
+
+        /* ---------------- KPIs ---------------- */
+        function actualizarKpis(casos) {
+            const abiertos = casos.filter(c => (c.estado || 'Abierto') === "Abierto").length;
+            const proceso = casos.filter(c => c.estado === "En Proceso").length;
+            const cerrados = casos.filter(c => c.estado === "Cerrado").length;
+            const vencidos = casos.filter(c => c.alerta_sla === "VENCIDO" && c.estado !== "Cerrado").length;
+
+            animarNumero('kpi-abiertos', abiertos);
+            animarNumero('kpi-proceso', proceso);
+            animarNumero('kpi-resueltos', cerrados);
+            animarNumero('kpi-vencidos', vencidos);
+        }
+
+        function animarNumero(id, valorFinal) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const valorInicial = parseInt(el.textContent) || 0;
+            if (valorInicial === valorFinal) { el.textContent = valorFinal; return; }
+
+            const duracion = 500;
+            const inicio = performance.now();
+
+            function animar(ahora) {
+                const t = Math.min((ahora - inicio) / duracion, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(valorInicial + (valorFinal - valorInicial) * ease);
+                if (t < 1) requestAnimationFrame(animar);
+                else el.textContent = valorFinal;
+            }
+            requestAnimationFrame(animar);
+        }
+
+        /* ---------------- HELPERS ---------------- */
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function formatearFecha(iso) {
+            if (!iso) return '—';
+            try {
+                const d = new Date(iso);
+                return d.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' });
+            } catch (e) { return '—'; }
+        }
+
+        function badgePrioridad(p) {
+            const map = {
+                'Urgente': 'badge-urgente',
+                'Alta': 'badge-alta',
+                'Media': 'badge-media',
+                'Baja': 'badge-baja'
+            };
+            const cls = map[p] || 'badge-media';
+            const ico = p === 'Urgente' ? '🔴' : p === 'Alta' ? '🟠' : p === 'Media' ? '🟡' : '🟢';
+            return `<span class="badge ${cls}">${ico} ${escapeHtml(p || 'Media')}</span>`;
+        }
+
+        function badgeEstado(e) {
+            const est = e || 'Abierto';
+            const map = {
+                'Abierto': 'badge-abierto',
+                'En Proceso': 'badge-proceso',
+                'Cerrado': 'badge-cerrado'
+            };
+            const cls = map[est] || 'badge-abierto';
+            const ico = est === 'Abierto' ? '📋' : est === 'En Proceso' ? '⏳' : '✅';
+            return `<span class="badge ${cls}">${ico} ${escapeHtml(est)}</span>`;
+        }
+
+        function badgeSla(caso) {
+            const estado = caso.estado || 'Abierto';
+            const alerta = caso.alerta_sla;
+
+            if (estado === 'Cerrado') return `<span class="badge badge-sla-cerrado">— Cerrado</span>`;
+            if (alerta === 'VENCIDO') {
+                const d = caso.dias_restantes;
+                return `<span class="badge badge-sla-vencido">🚨 Vencido ${d !== null ? `(${Math.abs(d)}d)` : ''}</span>`;
+            }
+            if (alerta === 'POR VENCER') {
+                return `<span class="badge badge-sla-por-vencer">⚠️ Por vencer</span>`;
+            }
+            if (alerta === 'OK') {
+                return `<span class="badge badge-sla-ok">✓ En tiempo</span>`;
+            }
+            return `<span class="badge badge-sla-sin-fecha">Sin fecha</span>`;
+        }
+
+        /* ---------------- TABLA ---------------- */
+        function renderizarTabla(casos) {
+            const tbody = document.getElementById('tabla-casos-body');
+            tbody.innerHTML = '';
+
+            if (!casos.length) {
+                tbody.innerHTML = `
+      <tr><td colspan="6" class="p-12 text-center">
+        <div class="text-4xl mb-2">🔍</div>
+        <p class="text-slate-500 font-semibold">No se encontraron solicitudes con los filtros aplicados</p>
+      </td></tr>`;
+                document.getElementById('contador-resultados').textContent = '0 resultados';
+                return;
+            }
+
+            casos.forEach(caso => {
+                const prioridad = (caso.prioridad || 'Media').trim();
+                const clasePrioridad = prioridad.toLowerCase().replace(/\s+/g, '-');
+                const tr = document.createElement('tr');
+                tr.className = `caso-row ${clasePrioridad}`;
+                tr.dataset.id = caso.id_correo || '';
+
+                tr.innerHTML = `
+      <td class="p-4 whitespace-nowrap">
+        <div class="font-semibold text-slate-700">${formatearFecha(caso.fecha_generacion)}</div>
+        <div class="text-xs text-slate-400 mt-0.5">${escapeHtml(caso.categoria || '')}</div>
+      </td>
+      <td class="p-4">
+        <div class="font-bold text-slate-800">${escapeHtml(caso.nombre || 'Sin nombre')}</div>
+        <div class="text-xs text-slate-500 mt-0.5">📍 ${escapeHtml(caso.unidad_apto || 'Sin unidad')}</div>
+      </td>
+      <td class="p-4 max-w-md">
+        <div class="font-semibold text-slate-700 truncate" title="${escapeHtml(caso.asunto || '')}">${escapeHtml(caso.asunto || 'Sin asunto')}</div>
+        <div class="text-xs text-slate-400 mt-0.5">${escapeHtml((caso.condicion || '').trim() || '—')}</div>
+      </td>
+      <td class="p-4 text-center">${badgePrioridad(prioridad)}</td>
+      <td class="p-4 text-center">${badgeEstado(caso.estado)}</td>
+      <td class="p-4 text-center">${badgeSla(caso)}</td>
+    `;
+
+                tr.addEventListener('click', () => abrirDetalle(caso));
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('contador-resultados').textContent =
+                `${casos.length} de ${todosLosCasos.length} solicitudes`;
+        }
+
+        /* ---------------- FILTROS ---------------- */
+        function filtrarCasos() {
+            const texto = (document.getElementById('search-box').value || '').toLowerCase().trim();
+            const prioridad = document.getElementById('filter-prioridad').value;
+            const estado = document.getElementById('filter-estado').value;
+
+            casosFiltrados = todosLosCasos.filter(c => {
+                const buscar = texto === '' ||
+                    (c.nombre && c.nombre.toLowerCase().includes(texto)) ||
+                    (c.unidad_apto && c.unidad_apto.toLowerCase().includes(texto)) ||
+                    (c.asunto && c.asunto.toLowerCase().includes(texto)) ||
+                    (c.categoria && c.categoria.toLowerCase().includes(texto));
+
+                const matchPrioridad = !prioridad || c.prioridad === prioridad;
+                const matchEstado = !estado || (c.estado || 'Abierto') === estado;
+
+                return buscar && matchPrioridad && matchEstado;
+            });
+
+            renderizarTabla(casosFiltrados);
+        }
+
+        /* ---------------- DETALLE ---------------- */
+        function abrirDetalle(caso) {
+            document.getElementById('detail-asunto').textContent = caso.asunto || 'Sin asunto';
+            document.getElementById('detail-meta').textContent =
+                `${caso.nombre || 'Sin nombre'} · ${caso.unidad_apto || 'Sin unidad'} · ${formatearFecha(caso.fecha_generacion)}`;
+
+            const body = document.getElementById('detail-body');
+            const estadoActual = caso.estado || 'Abierto';
+
+            body.innerHTML = `
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+      ${campoDetalle('Prioridad', badgePrioridad(caso.prioridad))}
+      ${campoDetalle('Estado', badgeEstado(estadoActual))}
+      ${campoDetalle('Categoría', escapeHtml(caso.categoria || '—'))}
+      ${campoDetalle('SLA', badgeSla(caso))}
+      ${campoDetalle('Condición', escapeHtml(caso.condicion || '—'))}
+      ${campoDetalle('Adjuntos', escapeHtml(caso.tiene_adjuntos || 'No'))}
+    </div>
+
+    <div class="detail-field">
+      <span class="lbl">Correo</span>
+      <span class="val">${escapeHtml(caso.correo || '—')}</span>
+    </div>
+    <div class="detail-field">
+      <span class="lbl">Teléfono</span>
+      <span class="val">${escapeHtml(caso.telefono || '—')}</span>
+    </div>
+    <div class="detail-field">
+      <span class="lbl">Observaciones</span>
+      <span class="val whitespace-pre-wrap">${escapeHtml(caso.observaciones || 'Sin observaciones')}</span>
+    </div>
+
+    <div class="mt-6 pt-4 border-t border-slate-200">
+      <h4 class="text-sm font-bold text-slate-700 mb-3">Gestión del caso</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Cambiar estado</label>
+          <select id="detail-estado-select"
+                  class="w-full px-3 py-2 border-2 border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+            <option value="Abierto"    ${estadoActual === 'Abierto' ? 'selected' : ''}>📋 Abierto</option>
+            <option value="En Proceso" ${estadoActual === 'En Proceso' ? 'selected' : ''}>⏳ En Proceso</option>
+            <option value="Cerrado"    ${estadoActual === 'Cerrado' ? 'selected' : ''}>✅ Cerrado</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Última actualización</label>
+          <p class="text-sm text-slate-600 pt-2">${formatearFecha(caso.ultima_actualizacion)}</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Notas internas</label>
+        <textarea id="detail-notas" rows="3"
+                  class="w-full px-3 py-2 border-2 border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 resize-none"
+                  placeholder="Agregar notas de gestión...">${escapeHtml(caso.notas_internas || '')}</textarea>
+      </div>
+      <button onclick="guardarCambios('${escapeHtml(caso.id_correo || '')}')"
+              class="w-full bg-gradient-to-r from-[#0f9b8e] to-[#12b8a8] hover:from-[#0d8a7e] hover:to-[#10a89a] text-white font-bold py-2.5 rounded-xl transition-all cursor-pointer">
+        💾 Guardar cambios
+      </button>
+    </div>
+  `;
+
+            document.getElementById('detail-overlay').classList.remove('hidden');
+        }
+
+        function campoDetalle(label, valorHtml) {
+            return `
+    <div class="bg-slate-50 rounded-lg p-3">
+      <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">${label}</div>
+      <div class="text-sm font-semibold text-slate-700">${valorHtml}</div>
+    </div>
+  `;
+        }
+
+        function cerrarDetalle() {
+            document.getElementById('detail-overlay').classList.add('hidden');
+        }
+
+        document.getElementById('detail-overlay').addEventListener('click', (e) => {
+            if (e.target.id === 'detail-overlay') cerrarDetalle();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') cerrarDetalle();
+        });
+
+        /* ---------------- GUARDAR CAMBIOS (doPost) ---------------- */
+        async function guardarCambios(idCorreo) {
+            const estado = document.getElementById('detail-estado-select').value;
+            const notas = document.getElementById('detail-notas').value;
+
+            if (!idCorreo) {
+                mostrarToast('❌ No se pudo identificar el caso');
+                return;
+            }
+
+            try {
+                mostrarToast('💾 Guardando cambios...');
+
+                const respuesta = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        token: API_TOKEN,
+                        id_correo: idCorreo,
+                        estado: estado,
+                        notas_internas: notas
+                    }),
+                    redirect: 'follow'
+                });
+
+                const data = await respuesta.json();
+
+                if (data.error) throw new Error(data.message || data.error);
+
+                // Actualizar localmente
+                const idx = todosLosCasos.findIndex(c => c.id_correo === idCorreo);
+                if (idx !== -1) {
+                    todosLosCasos[idx].estado = estado;
+                    todosLosCasos[idx].notas_internas = notas;
+                    todosLosCasos[idx].ultima_actualizacion = new Date().toISOString();
+                }
+
+                casosFiltrados = [...todosLosCasos];
+                actualizarKpis(todosLosCasos);
+                renderizarTabla(casosFiltrados);
+                cerrarDetalle();
+                mostrarToast('✅ Cambios guardados correctamente');
+            } catch (error) {
+                console.error('Error guardando:', error);
+                mostrarToast('❌ Error al guardar los cambios');
+            }
+        }
+
+        /* ---------------- AUTO-REFRESH cada 2 minutos ---------------- */
+        setInterval(() => {
+            if (sessionStorage.getItem("macerata_autenticado") === "true") {
+                cargarDatosDesdeSheets();
+            }
+        }, 120000);
+
+    </script>
+</body>
+
+</html>
