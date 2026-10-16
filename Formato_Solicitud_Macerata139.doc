@@ -1,0 +1,513 @@
+﻿<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40" lang="es"><head><meta charset="utf-8"><title>Formato de Solicitud - Consejo Macerata 139</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:DoNotOptimizeForBrowser/></w:WordDocument></xml><![endif]--><style>
+  @page {
+    size: 21.59cm 27.94cm;
+    margin: 1.4cm 1.7cm 1.4cm 1.7cm;
+    mso-page-orientation: portrait;
+    mso-header-margin: 0.8cm;
+    mso-footer-margin: 0.8cm;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    color: #000;
+    background: #e8ebf0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.35;
+  }
+
+  /* ---------- TOOLBAR (solo navegador) ---------- */
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: linear-gradient(135deg, #173a63, #0f9b8e);
+    color: #fff; padding: 12px 16px;
+    display: flex; flex-wrap: wrap; gap: 10px;
+    align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  }
+  .toolbar button {
+    font: inherit; font-weight: 700; font-size: 14px;
+    padding: 10px 18px; border-radius: 10px; border: 0;
+    cursor: pointer; background: #fff; color: #173a63;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .toolbar button:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.2); }
+  .toolbar button.primary { background: #f2c14e; color: #173a63; }
+  .toolbar p {
+    flex-basis: 100%; margin: 0; text-align: center;
+    font-size: 12.5px; opacity: .95;
+  }
+
+  /* ---------- HOJA ---------- */
+  .document {
+    max-width: 21.59cm;
+    margin: 24px auto;
+    background: #fff;
+    padding: 1.4cm 1.7cm;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  }
+
+  /* ---------- ENCABEZADO ---------- */
+  .header-table { width: 100%; border-collapse: collapse; margin-bottom: 8pt; }
+  .header-table td { vertical-align: middle; padding: 0; }
+  .logo-cell { width: 22mm; }
+  .logo-img { max-width: 20mm; max-height: 20mm; width: auto; height: auto; }
+  .logo-fallback {
+    width: 20mm; height: 20mm;
+    border: 1pt solid #173a63; border-radius: 3pt;
+    text-align: center; line-height: 20mm;
+    font-weight: 900; font-size: 12pt; color: #173a63;
+  }
+  .title-cell { padding-left: 8pt; }
+  .inst-name {
+    font-size: 13pt; font-weight: 900; color: #173a63;
+    letter-spacing: .3pt; line-height: 1.15;
+  }
+  .inst-sub { font-size: 10.5pt; color: #333; margin-top: 1pt; }
+  .doc-title {
+    font-size: 14pt; font-weight: 900; color: #000;
+    margin-top: 5pt; letter-spacing: .3pt;
+  }
+  .ref-cell {
+    width: 50mm; text-align: right;
+    font-size: 9pt; color: #333;
+    vertical-align: top; line-height: 1.6;
+  }
+  .ref-line {
+    display: inline-block; min-width: 22mm;
+    border-bottom: 1px solid #000;
+  }
+
+  .divider {
+    border: 0; border-top: 2pt solid #173a63;
+    margin: 5pt 0 10pt;
+  }
+
+  /* ---------- INSTRUCCIONES ---------- */
+  .instructions {
+    border: 1pt solid #b9c9e0; background: #eef3fa;
+    padding: 8pt 10pt; border-radius: 4pt;
+    margin-bottom: 12pt; font-size: 9.5pt; line-height: 1.45;
+  }
+  .instructions strong { color: #173a63; }
+
+  /* ---------- SECCIONES ---------- */
+  .section { margin-bottom: 12pt; page-break-inside: avoid; }
+  .section-title {
+    background: #173a63; color: #fff;
+    font-weight: 900; font-size: 11pt;
+    padding: 5pt 8pt; margin: 0 0 6pt;
+    letter-spacing: .3pt;
+  }
+
+  /* ---------- TABLAS DE CAMPOS ---------- */
+  table.form {
+    width: 100%; border-collapse: collapse;
+    font-size: 10.5pt;
+  }
+  table.form td { padding: 4pt 4pt; vertical-align: bottom; }
+  .field-lbl {
+    font-weight: 700; color: #222;
+    white-space: nowrap; padding-right: 6pt;
+  }
+  .field-val {
+    border-bottom: 1pt solid #444;
+    min-height: 14pt; padding: 2pt 4pt 3pt;
+  }
+
+  /* ---------- CHECKBOXES ---------- */
+  .cb-list {
+    width: 100%; border-collapse: collapse;
+    font-size: 10.5pt;
+  }
+  .cb-list td {
+    padding: 5pt 6pt 5pt 2pt;
+    vertical-align: top;
+    border-bottom: 1pt dotted #ccc;
+  }
+  .cb-list tr:last-child td { border-bottom: 0; }
+  .cb {
+    display: inline-block;
+    width: 10pt; height: 10pt;
+    border: 1pt solid #000;
+    margin-right: 5pt;
+    vertical-align: -1pt;
+  }
+  .cb-opt { font-weight: 700; }
+  .cb-desc { color: #555; font-size: 9.5pt; }
+
+  /* ---------- CAJA DE DESCRIPCIÓN ---------- */
+  .desc-box {
+    border: 1pt solid #444;
+    padding: 2pt 8pt;
+  }
+  .desc-line {
+    height: 20pt;
+    border-bottom: 1pt solid #c8c8c8;
+  }
+  .desc-line:last-child { border-bottom: 0; }
+
+  /* ---------- NOTAS ---------- */
+  .note {
+    border: 1pt solid #b9c9e0; background: #f5f8fd;
+    padding: 7pt 9pt; font-size: 9.5pt; line-height: 1.45;
+    margin: 8pt 0; page-break-inside: avoid;
+  }
+  .note strong { color: #173a63; }
+  .note-warn {
+    border-color: #f0c896; background: #fff8ec; color: #6d4a00;
+  }
+  .note-warn strong { color: #8a5a06; }
+
+  /* ---------- FIRMAS ---------- */
+  .signature-grid {
+    width: 100%; border-collapse: collapse;
+    margin-top: 18pt;
+  }
+  .signature-grid td {
+    padding: 4pt 8pt; vertical-align: bottom;
+    text-align: center; font-size: 9.5pt;
+  }
+  .sig-line {
+    border-bottom: 1pt solid #000;
+    height: 28pt; margin-bottom: 3pt;
+  }
+
+  /* ---------- RADICACIÓN ---------- */
+  .radicacion {
+    border: 1.5pt solid #173a63;
+    padding: 8pt 10pt; margin-top: 12pt;
+    font-size: 9.5pt; page-break-inside: avoid;
+  }
+  .radicacion-title {
+    background: #173a63; color: #fff;
+    display: inline-block; padding: 2pt 8pt;
+    font-weight: 900; font-size: 9.5pt;
+    margin: -12pt 0 6pt -12pt;
+    letter-spacing: .3pt;
+  }
+
+  /* ---------- PIE ---------- */
+  .doc-footer {
+    margin-top: 14pt; padding-top: 8pt;
+    border-top: 1pt solid #ccc;
+    font-size: 8.5pt; color: #666;
+    text-align: center; line-height: 1.5;
+    page-break-inside: avoid;
+  }
+
+  /* ---------- IMPRESIÓN ---------- */
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none !important; }
+    .document {
+      max-width: none; margin: 0; padding: 0;
+      box-shadow: none;
+    }
+    .section, .note, .radicacion, .instructions {
+      page-break-inside: avoid;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .document { padding: 14px; margin: 10px; }
+    .ref-cell { display: none; }
+    .toolbar p { font-size: 11.5px; }
+  }
+ body { background:#fff; padding:0; margin:0; } .document { box-shadow:none; margin:0; padding:0; max-width:none; }</style></head><body>
+
+  <!-- ENCABEZADO -->
+  <table class="header-table">
+    <tbody><tr>
+      <td class="logo-cell">
+        <img src="images/macerata.png" alt="Logo Macerata 139" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" style="display: none;">
+        <div class="logo-fallback" style="display: block;">M139</div>
+      </td>
+      <td class="title-cell">
+        <div class="inst-name">CONSEJO DE ADMINISTRACIÓN</div>
+        <div class="inst-sub">Propiedad Macerata 139</div>
+        <div class="doc-title">FORMATO DE SOLICITUD ESCRITA</div>
+      </td>
+      <td class="ref-cell">
+        <div>Radicado No.: <span class="ref-line">&nbsp;</span></div>
+        <div>Código: F-CA-001</div>
+        <div>Versión: 1.0</div>
+      </td>
+    </tr>
+  </tbody></table>
+
+  <hr class="divider">
+
+  <!-- INSTRUCCIONES -->
+  <div class="instructions">
+    <strong>Instrucciones para diligenciar:</strong> Por favor escriba con letra clara y legible, usando
+    esfero de tinta negra o azul. Marque con una <strong>X</strong> dentro del cuadro la opción que
+    corresponda. Si necesita ayuda, puede solicitar apoyo a un familiar, a un vecino o al administrador.
+    Al finalizar, entregue este formato al administrador o deposítelo en el buzón del Consejo ubicado
+    en portería. También puede escanearlo o fotografiarlo y enviarlo al correo electrónico del Consejo
+    indicado al final de este documento.
+  </div>
+
+  <!-- ============ 1. DATOS DEL SOLICITANTE ============ -->
+  <div class="section">
+    <div class="section-title">1. DATOS DEL SOLICITANTE</div>
+    <table class="form">
+      <tbody><tr>
+        <td class="field-lbl" style="width:16%">Fecha:</td>
+        <td class="field-val" style="width:34%">&nbsp;</td>
+        <td class="field-lbl" style="width:12%">Hora:</td>
+        <td class="field-val">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl">Nombre completo:</td>
+        <td class="field-val" colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl">Torre / Apartamento:</td>
+        <td class="field-val" colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl">Correo electrónico:</td>
+        <td class="field-val" colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl">Teléfono de contacto:</td>
+        <td class="field-val" colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl" style="vertical-align:top;padding-top:8pt;">Condición:</td>
+        <td colspan="3" style="padding:6pt 4pt 4pt;">
+          <span class="cb"></span> <span class="cb-opt">Arrendatario</span>
+          &nbsp;&nbsp;&nbsp;
+          <span class="cb"></span> <span class="cb-opt">Propietario</span>
+          &nbsp;&nbsp;&nbsp;
+          <span class="cb"></span> <span class="cb-opt">Familiar u ocupante</span>
+          &nbsp;&nbsp;&nbsp;
+          <span class="cb"></span> <span class="cb-opt">Otro:</span>
+          <span style="display:inline-block;min-width:110pt;border-bottom:1pt solid #444;">&nbsp;</span>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ============ 2. PRIORIDAD ============ -->
+  <div class="section">
+    <div class="section-title">2. NIVEL DE PRIORIDAD DE LA SOLICITUD</div>
+    <p style="font-size:9.5pt;margin:0 0 6pt;color:#555;">
+      Marque con una X el nivel que mejor describa su caso. Esta información nos ayuda a
+      atender primero lo más urgente.
+    </p>
+    <table class="cb-list">
+      <tbody><tr>
+        <td style="width:6%"><span class="cb"></span></td>
+        <td style="width:20%"><span class="cb-opt">BAJA</span></td>
+        <td><span class="cb-desc">Información, sugerencia o trámite no urgente.</span></td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td><span class="cb-opt">MEDIA</span></td>
+        <td><span class="cb-desc">Requiere atención del Consejo, pero puede esperar unos días.</span></td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td><span class="cb-opt">ALTA</span></td>
+        <td><span class="cb-desc">Afecta la convivencia o el uso normal de la propiedad.</span></td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td><span class="cb-opt">URGENTE</span></td>
+        <td><span class="cb-desc">Riesgo de seguridad, inundación, daño en curso o peligro inmediato.</span></td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ============ 3. CATEGORÍA ============ -->
+  <div class="section">
+    <div class="section-title">3. CATEGORÍA O MOTIVO DE LA SOLICITUD</div>
+    <p style="font-size:9.5pt;margin:0 0 6pt;color:#555;">
+      Marque con una X la categoría que mejor corresponda a su solicitud.
+    </p>
+    <table class="cb-list">
+      <tbody><tr>
+        <td style="width:6%"><span class="cb"></span></td>
+        <td style="width:44%">Mantenimiento y reparaciones</td>
+        <td style="width:6%"><span class="cb"></span></td>
+        <td>Ruidos y convivencia</td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td>Áreas comunes y zonas verdes</td>
+        <td><span class="cb"></span></td>
+        <td>Cuotas, pagos y cartera</td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td>Seguridad y vigilancia</td>
+        <td><span class="cb"></span></td>
+        <td>Mascotas</td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td>Parqueadero y vehículos</td>
+        <td><span class="cb"></span></td>
+        <td>Documentación y administración</td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td colspan="3">Otro:
+          <span style="display:inline-block;min-width:260pt;border-bottom:1pt solid #444;">&nbsp;</span>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ============ 4. DESCRIPCIÓN ============ -->
+  <div class="section">
+    <div class="section-title">4. DESCRIPCIÓN DE LA SOLICITUD</div>
+    <table class="form" style="margin-bottom:6pt;">
+      <tbody><tr>
+        <td class="field-lbl" style="width:22%">Asunto:</td>
+        <td class="field-val" colspan="3">&nbsp;</td>
+      </tr>
+    </tbody></table>
+    <p style="font-size:9.5pt;margin:0 0 4pt;color:#555;">
+      Describa su solicitud con el mayor detalle posible: ¿qué ocurre?, ¿desde cuándo?, ¿dónde?,
+      ¿quiénes están involucrados? y ¿qué espera del Consejo de Administración?
+    </p>
+    <div class="desc-box">
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+      <div class="desc-line"></div>
+    </div>
+  </div>
+
+  <!-- ============ 5. DOCUMENTOS ANEXOS ============ -->
+  <div class="section">
+    <div class="section-title">5. DOCUMENTOS O SOPORTES ANEXOS</div>
+    <table class="cb-list">
+      <tbody><tr>
+        <td style="width:6%"><span class="cb"></span></td>
+        <td colspan="3"><span class="cb-opt">No adjunto documentos</span> con esta solicitud.</td>
+      </tr>
+      <tr>
+        <td><span class="cb"></span></td>
+        <td colspan="3">
+          <span class="cb-opt">Sí adjunto los siguientes documentos</span> (indique cuáles):
+        </td>
+      </tr>
+    </tbody></table>
+    <table class="form" style="margin-top:4pt;">
+      <tbody><tr>
+        <td class="field-lbl" style="width:6%;border:0;padding-left:14pt;">1.</td>
+        <td class="field-val">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl" style="border:0;padding-left:14pt;">2.</td>
+        <td class="field-val">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl" style="border:0;padding-left:14pt;">3.</td>
+        <td class="field-val">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl" style="border:0;padding-left:14pt;">4.</td>
+        <td class="field-val">&nbsp;</td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ============ 6. NOTA DE PRIVACIDAD ============ -->
+  <div class="note">
+    <strong>Sobre sus datos personales:</strong> Este formato y el portal web del Consejo funcionan
+    únicamente para <strong>centralizar y tramitar su solicitud</strong>. El Consejo de Administración
+    de la Propiedad Macerata 139 usará sus datos exclusivamente para atender, responder y hacer
+    seguimiento a esta solicitud. No serán compartidos con terceros ni utilizados para fines
+    distintos. La información se considera radicada formalmente al momento de la entrega de este
+    formato al Consejo, y la comunicación se continuará por el medio que usted indique (correo
+    electrónico o teléfono).
+  </div>
+
+  <!-- ============ 7. FIRMA ============ -->
+  <div class="section">
+    <div class="section-title">6. FIRMA DEL SOLICITANTE</div>
+    <p style="font-size:9.5pt;margin:0 0 4pt;color:#555;">
+      Declaro que la información consignada en este formato es veraz y completa.
+    </p>
+    <table class="signature-grid">
+      <tbody><tr>
+        <td style="width:50%">
+          <div class="sig-line"></div>
+          <div><strong>Firma del solicitante</strong></div>
+        </td>
+        <td style="width:50%">
+          <div class="sig-line"></div>
+          <div><strong>Número de cédula</strong></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="sig-line"></div>
+          <div><strong>Nombre completo (letra legible)</strong></div>
+        </td>
+        <td>
+          <div class="sig-line"></div>
+          <div><strong>Fecha (día / mes / año)</strong></div>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ============ 8. RADICACIÓN (USO INTERNO) ============ -->
+  <div class="radicacion">
+    <div class="radicacion-title">USO EXCLUSIVO DEL CONSEJO — RADICACIÓN</div>
+    <table class="form" style="font-size:9.5pt;margin-top:4pt;">
+      <tbody><tr>
+        <td class="field-lbl" style="width:22%">Recibido por:</td>
+        <td class="field-val" style="width:28%">&nbsp;</td>
+        <td class="field-lbl" style="width:14%">Fecha:</td>
+        <td class="field-val">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="field-lbl" style="vertical-align:top;padding-top:8pt;">Observaciones internas:</td>
+        <td colspan="3" style="padding-top:6pt;">
+          <div style="border-bottom:1pt solid #444;height:14pt;">&nbsp;</div>
+          <div style="border-bottom:1pt solid #444;height:14pt;margin-top:4pt;">&nbsp;</div>
+          <div style="border-bottom:1pt solid #444;height:14pt;margin-top:4pt;">&nbsp;</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align:center;padding-top:18pt;">
+          <div style="display:inline-block;width:55%;border-top:1pt solid #000;padding-top:3pt;font-size:9pt;">
+            Firma y sello del Consejo de Administración
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <!-- ============ CANALES DE ENTREGA ============ -->
+  <div class="note note-warn" style="margin-top:14pt;">
+    <strong>Canales para radicar esta solicitud:</strong><br>
+    <strong>1. Presencial:</strong> Entregue este formato al administrador o deposítelo en el buzón
+    del Consejo ubicado en portería.<br>
+    <strong>2. Correo electrónico:</strong> Escanee o fotografíe las páginas diligenciadas y envíelas
+    como adjunto al correo <strong>consejomacerata@gmail.com</strong>, indicando en el asunto el
+    nivel de prioridad y el número de torre/apartamento.<br>
+    <strong>3. Portal web:</strong> También puede radicar su solicitud en línea a través del portal
+    digital del Consejo (escanee el código QR disponible en portería).
+  </div>
+
+  <div class="doc-footer">
+    Consejo de Administración · Propiedad Macerata 139<br>
+    Formato F-CA-001 · Versión 1.0 · Documento de uso interno y comunitario
+  </div>
+
+</body></html>
